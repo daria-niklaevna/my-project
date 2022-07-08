@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="background: white">
+        <div class="ml-3">
+            <h1>Car model: {{ car.model }}</h1>
+            <h5>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</h5>
+            <hr>
+        </div>
+    </div>
+
+    <div style="background: white">
+        <div class="ml-4">
+            <hr>
+            <h2>Drivers:</h2>
+
+
+            <ul>
+            {% for driver in car.drivers.all %}
+                <li>{{ driver.username }} ({{ driver.first_name }} {{ driver.last_name }})</li>
+            {% empty %}
+                <p>This car has no driver.</p>
+            {% endfor %}
+            </ul>
+            <hr>
+        </div>
+    </div>
+
+    {% if user not in car.drivers.all %}
+        <a href="{% url 'taxi:add-user' pk=car.id %}">
+            <button style="background: chartreuse" class="btn btn-default">Assign me to this car</button>
+        </a>
+    {% else %}
+        <a href="{% url 'taxi:delete-user' pk=car.id %}">
+            <button style="background: tomato" class="btn btn-default">Delete me from this car</button>
+        </a>
+    {% endif %}
+    <hr>
+    <a href="{% url 'taxi:car-update' pk=car.id %}">
+        <button style="background: greenyellow" class="btn btn-default">Update</button>
+    </a>
+    <a href="{% url 'taxi:car-delete' pk=car.id %}">
+        <button style="background: lightcoral" class="btn btn-default">Delete</button>
+    </a>
+
+
+{% endblock %}

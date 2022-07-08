@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <div style="background: white; text-align: center;">
+        <hr>
+        <h1>
+            Manufacturer List
+            <a href="{% url 'taxi:manufacturer-create' %}">
+                <button style="background: #81d4fa" class="btn btn-default" ><strong>+</strong></button>
+            </a>
+        </h1>
+        <hr>
+    </div>
+    <hr>
+
+
+    <form action="" method="get" class="form-inline">
+        {{ search_form|crispy }}
+        <input class="btn btn-info" type="submit" value=" 🔎 ">
+    </form>
+    <hr>
+
+    <div style="background: white">
+        {% if manufacturer_list %}
+        <table class="table">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Country</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for manufacturer in manufacturer_list %}
+                <tr>
+                  <td>
+                      {{ manufacturer.id }}
+                  </td>
+                  <td>
+                      {{ manufacturer.name }}
+                  </td>
+                  <td>
+                      {{ manufacturer.country }}
+                  </td>
+                    <td>
+                        <a href="{% url "taxi:manufacturer-update" pk=manufacturer.id %}">UPDATE</a>
+                    </td>
+                    <td>
+                        <a href="{% url "taxi:manufacturer-delete" pk=manufacturer.id %}">DELETE</a>
+                    </td>
+              </tr>
+            {% endfor %}
+          </table>
+
+        {% else %}
+            <p>There are no manufacturers in the service.</p>
+        {% endif %}
+    </div>
+    <hr>
+
+{% endblock %}

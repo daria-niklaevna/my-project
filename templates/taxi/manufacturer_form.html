@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="background: white">
+        <div class="ml-3">
+            <h1>{{ object|yesno:"Update, Create" }} Manufacturer</h1>
+            <hr>
+
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <hr>
+
+                <input type="submit" value="Submit" style="margin-left: 15%" class="btn btn-primary" >
+                <hr>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
