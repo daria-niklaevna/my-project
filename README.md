@@ -6,6 +6,8 @@ Django project for managing cars, drivers and manufacturers in taxi service.
 
 [Taxi service project deployed to heroku](https://my-project-taxi-service.herokuapp.com/accounts/login/)
 
+Use username: user, password: user12345 to get familiar the project.
+
 ## Installation
 
 Python3 must be already installed.
@@ -30,4 +32,3 @@ python manage.py runserver # starts Django Server
 
 ![Website Interface](venv/demo.png)
 
-Use username: user, password: user12345 to get familiar the project.
