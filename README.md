@@ -30,3 +30,4 @@ python manage.py runserver # starts Django Server
 
 ![Website Interface](venv/demo.png)
 
+Use username: user, password: user12345 to get familiar the project.
