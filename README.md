@@ -30,5 +30,5 @@ python manage.py runserver # starts Django Server
 
 ## Demo
 
-![Website Interface](venv/demo.png)
+![Website Interface](demo.png)
 
